@@ -1,4 +1,4 @@
-namespace Connect4Web.Core.Domain
+namespace Connect4.Core.Domain
 {
     public enum Occupied
     {

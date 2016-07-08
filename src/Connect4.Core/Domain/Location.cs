@@ -1,4 +1,5 @@
-﻿namespace Connect4Web.Core.Domain
+﻿
+namespace Connect4.Core.Domain
 {
     public class Location
     {
@@ -11,8 +12,8 @@
         {
             LocationRow = locationRow;
             LocationCol = locationCol;
+
+            Occupied = Occupied.None;
         }
-
-
     }
 }
