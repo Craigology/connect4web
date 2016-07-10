@@ -99,6 +99,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiagonalUpEnumeratorTests.cs" />
+    <Compile Include="DiagonalDownEnumeratorTests.cs" />
+    <Compile Include="AcceptanceTests.cs" />
+    <Compile Include="RowEnumeratorTests.cs" />
     <Compile Include="ColumnEnumeratorTests.cs" />
     <Compile Include="BoardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

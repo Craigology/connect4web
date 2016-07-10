@@ -41,8 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Board.cs" />
-    <Compile Include="Enumerators\DiagonalSWtoNEEnumerator.cs" />
-    <Compile Include="Enumerators\DiagonalNWtoSEEnumerator.cs" />
+    <Compile Include="Domain\Turn.cs" />
+    <Compile Include="Enumerators\DiagonalUpEnumerator.cs" />
+    <Compile Include="Enumerators\DiagonalDownEnumerator.cs" />
     <Compile Include="Enumerators\ColumnEnumerator.cs" />
     <Compile Include="Domain\Location.cs" />
     <Compile Include="Domain\Occupied.cs" />

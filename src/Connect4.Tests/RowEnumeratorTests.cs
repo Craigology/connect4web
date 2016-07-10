@@ -7,14 +7,14 @@ using Shouldly;
 namespace Connect4.Tests
 {
     [TestFixture]
-    public class ColumnEnumeratorTests
+    public class RowEnumeratorTests
     {
         [Test]
-        public void ColumnEnumerator_InitialState_InvalidUntilMoveNextCalled()
+        public void RowEnumerator_InitialState_InvalidUntilMoveNextCalled()
         {
             var board = new Board(3, 3);
-            var sut = new ColumnEnumerator(board, 2);
-
+            var sut = new RowEnumerator(board, 2);
+            
             Assert.Throws<IndexOutOfRangeException>(() => { var location = sut.Current; });
 
             sut.MoveNext();
@@ -23,14 +23,14 @@ namespace Connect4.Tests
         }
 
         [Test]
-        public void ColumnEnumerator_MoveNext_ReturnsTheExpectedLocation()
+        public void RowEnumerator_MoveNext_ReturnsTheExpectedLocation()
         {
             var board = new Board(3, 3);
-            board[0, 1].Occupied = Occupied.Red;
+            board[1, 0].Occupied = Occupied.Red;
             board[1, 1].Occupied = Occupied.Yellow;
-            board[2, 1].Occupied = Occupied.Red;
+            board[1, 2].Occupied = Occupied.Red;
 
-            var sut = new ColumnEnumerator(board, 1);
+            var sut = new RowEnumerator(board, 1);
 
             sut.MoveNext();
             sut.Current.Occupied.ShouldBe(Occupied.Red);
@@ -41,14 +41,14 @@ namespace Connect4.Tests
         }
 
         [Test]
-        public void ColumnEnumerator_MoveNext_ReturnsFalseAtEndOfRow()
+        public void RowEnumerator_MoveNext_ReturnsFalseAtEndOfRow()
         {
             var board = new Board(3, 3);
-            board[0, 1].Occupied = Occupied.Red;
+            board[1, 0].Occupied = Occupied.Red;
             board[1, 1].Occupied = Occupied.Yellow;
-            board[2, 1].Occupied = Occupied.Red;
+            board[1, 2].Occupied = Occupied.Red;
 
-            var sut = new ColumnEnumerator(board, 1);
+            var sut = new RowEnumerator(board, 1);
 
             sut.MoveNext().ShouldBe(true);
             sut.MoveNext().ShouldBe(true);

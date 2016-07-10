@@ -4,7 +4,7 @@ using Connect4.Core.Domain;
 
 namespace Connect4.Core.Enumerators
 {
-    public class DiagonalNWtoSEEnumerator : IEnumerator<Location>
+    public class DiagonalDownEnumerator : IEnumerator<Location>, IEnumerable<Location>
     {
         private readonly Board _board;
         private int _rowPosition;
@@ -13,7 +13,7 @@ namespace Connect4.Core.Enumerators
         public Location Current => _board.Locations[_rowPosition, _columnPosition];
         object IEnumerator.Current => Current;
 
-        public DiagonalNWtoSEEnumerator(Board board, int rowPosition, int columnPosition)
+        public DiagonalDownEnumerator(Board board, int rowPosition, int columnPosition)
         {
             _board = board;
             _rowPosition = rowPosition;
@@ -42,6 +42,16 @@ namespace Connect4.Core.Enumerators
 
         public void Dispose()
         {
+        }
+
+        public IEnumerator<Location> GetEnumerator()
+        {
+            return this;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

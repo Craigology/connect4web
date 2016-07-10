@@ -4,7 +4,7 @@ using Connect4.Core.Domain;
 
 namespace Connect4.Core.Enumerators
 {
-    public class RowEnumerator : IEnumerator<Location>
+    public class RowEnumerator : IEnumerator<Location>, IEnumerable<Location>
     {
         private readonly Board _board;
         private readonly int _rowNumber;
@@ -17,6 +17,8 @@ namespace Connect4.Core.Enumerators
         {
             _board = board;
             _rowNumber = rowNumber;
+
+            Reset();
         }
 
         public bool MoveNext()
@@ -33,6 +35,16 @@ namespace Connect4.Core.Enumerators
 
         public void Dispose()
         {
-        }   
+        }
+
+        public IEnumerator<Location> GetEnumerator()
+        {
+            return this;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }
