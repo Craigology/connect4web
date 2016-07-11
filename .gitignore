@@ -6,6 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+src/Connect4.Web/dist/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
