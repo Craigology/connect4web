@@ -6,6 +6,10 @@ namespace Connect4.Controllers
     {
         public ActionResult Index()
         {
+            var fred = Session["dude"];
+
+            Session["dude"] = "xyz";
+
             return View();
         }
     }

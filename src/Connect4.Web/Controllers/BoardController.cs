@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.SessionState;
 using Connect4.Core.Domain;
+using Newtonsoft.Json;
 
 namespace Connect4.Controllers
 {
@@ -23,6 +24,11 @@ namespace Connect4.Controllers
         // GET: api/Api/5
         public string Get(int id)
         {
+            var session = SessionStateUtility.GetHttpSessionStateFromContext(HttpContext.Current);
+            var b = new Board(5, 6);
+            var s = JsonConvert.SerializeObject(b);
+            session["board"] = b;
+            session["json"] = s;
             return "value";
         }
 
