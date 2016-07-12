@@ -21,7 +21,7 @@ gulp.task('build-system', function() {
     .pipe(changed(paths.output, {extension: '.js'}))
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(to5(assign({}, compilerOptions.system())))
-    .pipe(sourcemaps.write('.', {includeContent: false, sourceRoot: '/src'}))
+    .pipe(sourcemaps.write('.', {includeContent: false, sourceRoot: '/app'}))
     .pipe(gulp.dest(paths.output));
 });
 

@@ -15,13 +15,24 @@ export class Play {
     this.board = undefined;
   }
 
-  activate() {
-    //     return this.http.fetch('api/board/new', { method: 'post' })
-    //   .then(response => response.json());
-    //   //.then(users => this.users = users);
+  loadBoard() {
+    var self = this;
 
-    this.board = this.http.fetch('api/board/get')
-      .then(response => response.json());
-      //.then(users => this.users = users);
+    return this.http.fetch('api/board/get')
+      .then(response => response.json())
+      .then(boardDto => {
+          if (boardDto === null) {
+              return self.http.fetch('api/board/new/5/5', { method: 'post' })
+                 .then(response => response.json())
+                 .then(boardDto => self.board = boardDto);
+          } else {
+              self.board  = boardDto;
+          }
+      });
+  }
+
+  activate() {
+
+    return this.loadBoard();
   }
 }
