@@ -14,21 +14,8 @@ namespace Connect4
     {
         public void Configuration(IAppBuilder app)
         {
-            var builder = new ContainerBuilder();
-
-            var config = GlobalConfiguration.Configuration;
-
-            var assemblies = new[] { Assembly.GetExecutingAssembly() };
-
-            builder.RegisterApiControllers(assemblies);
-
-            builder.RegisterAssemblyTypes(assemblies)
-                .AsClosedTypesOf(typeof (IMapper<,>))
-                .AsImplementedInterfaces()
-                .InstancePerDependency();                
-
-            var container = builder.Build();
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            ConfigureIoC();
+            ConfigureLogging();
         }
     }
 }

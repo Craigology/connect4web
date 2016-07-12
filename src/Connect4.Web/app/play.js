@@ -12,10 +12,15 @@ export class Play {
     });
 
     this.http = http;
+    this.board = undefined;
   }
 
   activate() {
-    return this.http.fetch('api/board/new/5/5', { method: 'post' })
+    //     return this.http.fetch('api/board/new', { method: 'post' })
+    //   .then(response => response.json());
+    //   //.then(users => this.users = users);
+
+    this.board = this.http.fetch('api/board/get')
       .then(response => response.json());
       //.then(users => this.users = users);
   }
