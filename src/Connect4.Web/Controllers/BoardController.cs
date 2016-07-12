@@ -7,41 +7,35 @@ using System.Web;
 using System.Web.Http;
 using System.Web.SessionState;
 using Connect4.Core.Domain;
+using Connect4.Dtos;
 using Newtonsoft.Json;
 
 namespace Connect4.Controllers
 {
     public class BoardController : ApiController
     {
+        private const string RoutePrefix = "api/board/";
         private IHttpSessionState GetSessionState()
         {
             return SessionStateUtility.GetHttpSessionStateFromContext(HttpContext.Current);
         }
 
-        public void NewBoard(int numberOfRows, int numberOfColumns)
+        [Route(RoutePrefix +"new/{numberOfRows}/{numberOfColumns}")]
+        public void New(int numberOfRows, int numberOfColumns)
         {
             var board = new Board(numberOfRows, numberOfColumns);
         }
 
-        // GET: api/Api/5
-        public string Get(int id)
+        [Route(RoutePrefix + "yellowTurn/{column}")]
+        public TurnDto YellowTurn(int column)
         {
-            return "value";
+            return new TurnDto();
         }
 
-        // POST: api/Api
-        public void Post([FromBody]string value)
+        [Route(RoutePrefix + "redTurn/{column}")]
+        public TurnDto RedTurn(int column)
         {
-        }
-
-        // PUT: api/Api/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Api/5
-        public void Delete(int id)
-        {
+            return new TurnDto();
         }
     }
 }

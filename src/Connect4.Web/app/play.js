@@ -15,7 +15,7 @@ export class Play {
   }
 
   activate() {
-    return this.http.fetch('api/Board/NewBoard/5/5')
+    return this.http.fetch('api/board/new/5/5', { method: 'post' })
       .then(response => response.json());
       //.then(users => this.users = users);
   }
