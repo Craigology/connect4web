@@ -6,6 +6,8 @@
 
         public bool IsWinningTurn { get; set; }
 
+        public bool IsDraw { get; set; }
+
         public static Turn InvalidTurn = new Turn {  Location = null, IsWinningTurn = false };
     }
 }

@@ -67,7 +67,8 @@ namespace Connect4.Core.Domain
 
             TurnCount++;
 
-            return new Turn { Location = availableLocation, IsWinningTurn = IsWinningTurn(availableLocation) };
+            var isWin = IsWinningTurn(availableLocation);
+            return new Turn { Location = availableLocation, IsWinningTurn = isWin, IsDraw = !isWin && IsDraw() };
         }
 
         private bool IsWinningTurn(Location location)
@@ -77,6 +78,11 @@ namespace Connect4.Core.Domain
             || CheckForSequence(new ColumnEnumerator(this, location.LocationCol), location.Occupied)
             || CheckForSequence(new DiagonalDownEnumerator(this, location.LocationRow, location.LocationCol), location.Occupied)
             || CheckForSequence(new DiagonalUpEnumerator(this, location.LocationRow, location.LocationCol), location.Occupied);
+        }
+
+        private bool IsDraw()
+        {
+            return NumberOfColumns*NumberOfRows == TurnCount;
         }
 
         private bool CheckForSequence(IEnumerator<Location> enumerator, Occupied occupied)
