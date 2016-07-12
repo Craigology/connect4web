@@ -1,5 +1,5 @@
-//import {computedFrom} from 'aurelia-framework';
+import 'animate/animate.min.css!';
 
 export class Landing {
-  
+ //.carousel();
 }

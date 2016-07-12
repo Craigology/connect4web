@@ -13,22 +13,19 @@ namespace Connect4.Controllers
 {
     public class BoardController : ApiController
     {
-        // GET: api/Api
-        public string[] NewBoard(int numberOfRows, int numberOfColumns)
+        private IHttpSessionState GetSessionState()
+        {
+            return SessionStateUtility.GetHttpSessionStateFromContext(HttpContext.Current);
+        }
+
+        public void NewBoard(int numberOfRows, int numberOfColumns)
         {
             var board = new Board(numberOfRows, numberOfColumns);
-
-            return new string[] { "value1", "value2" };
         }
 
         // GET: api/Api/5
         public string Get(int id)
         {
-            var session = SessionStateUtility.GetHttpSessionStateFromContext(HttpContext.Current);
-            var b = new Board(5, 6);
-            var s = JsonConvert.SerializeObject(b);
-            session["board"] = b;
-            session["json"] = s;
             return "value";
         }
 

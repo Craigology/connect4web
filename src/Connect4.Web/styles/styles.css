@@ -41,12 +41,15 @@ body {
 
 .landing {
     font-family: 'Montserrat', sans-serif;
+    
 }
 .landing > h1 {
     color: #164FA9;
     text-align: center;
     font-size: 48pt;
+    font-weight: bolder;
 }
+
 
 .landing:before {
     overflow-y: hidden;
