@@ -1,3 +1,30 @@
 <template>
-    <div></div>
+    <require from="./location"></require>
+    <require from="./turn-button"></require>
+
+    <div class="container">
+        <div class="play-area">
+            <div class="turn-button-area">
+                <div class="row">
+                    <turn-button 
+                        repeat.for="turnButton of board.turnButtons"
+                            column.bind="turnButton.column"
+                        >
+                    </turn-button>
+                </div>
+            </div>
+            <div class="board">
+                <div class="row" repeat.for="row of board.rows">
+                    <location
+                            repeat.for="location of row"
+                                location.bind="location"
+                                is-yellow.bind="location.isYellow"
+                                is-red.bind="location.isRed"
+                                is-win.bind="location.isWin"
+                    >
+                  </location>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

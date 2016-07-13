@@ -76,3 +76,64 @@ body {
 .play-params {
     text-align: center;
 }
+
+.play-area {
+    padding-top: 100px;
+    padding-bottom: 100px
+}
+
+.turn-button-area {
+}
+
+.turn-button-area > .row {
+    display: flex;
+    height: 100%;
+}
+
+.turn-button-area .btn {
+    height: 100%;
+    opacity: 0.1;
+    width: 100px;
+    margin: 10px;
+}
+
+.turn-button-area .btn:hover {
+    opacity: 0.5;
+}
+
+.board {
+    display: inline-block;
+}
+
+.board > .row {
+    display: flex;
+}
+
+.location {
+    margin: 10px;
+}
+
+.location-empty {
+    height: 100px;
+    width: 100px;;
+    border-color: #164FA9;  
+    border-radius: 50px; 
+    border-width: 2px;
+    border-style: solid;
+}
+
+.location-red {
+    height: 100px;
+    width: 100px;
+    background-color: #BB1819;
+    border-color: #BB1819;  
+    border-radius: 50px; 
+}
+
+.location-yellow {
+    height: 100px;
+    width: 100px;
+    background-color: #F5E051;
+    border-color: #F5E051;  
+    border-radius: 50px;    
+}
