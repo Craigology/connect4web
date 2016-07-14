@@ -10,7 +10,7 @@ namespace Connect4.Tests
         [Test]
         public void Board_NumberOfRows_ThrowsExceptionIfOutOfRange()
         {
-            Assert.DoesNotThrow(() => new Board(1,1));
+            Assert.DoesNotThrow(() => new Board(4,4));
 
             Assert.Throws<ArgumentOutOfRangeException>(() => new Board(0, 1));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Board(-1, 1));
@@ -19,7 +19,7 @@ namespace Connect4.Tests
         [Test]
         public void Board_NumberOfColumns_ThrowsExceptionIfOutOfRange()
         {
-            Assert.DoesNotThrow(() => new Board(1, 1));
+            Assert.DoesNotThrow(() => new Board(4, 4));
 
             Assert.Throws<ArgumentOutOfRangeException>(() => new Board(1, 0));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Board(1, -1));
@@ -29,7 +29,7 @@ namespace Connect4.Tests
         [Test]
         public void Board_RedTurn_ThrowsExceptionIfOutOfRange()
         {
-            var sut = new Board(3, 3);
+            var sut = new Board(5, 5);
 
             Assert.DoesNotThrow(() => sut.RedTurn(2));
 
@@ -40,7 +40,7 @@ namespace Connect4.Tests
         [Test]
         public void Board_YellowTurn_ThrowsExceptionIfOutOfRange()
         {
-            var sut = new Board(3, 3);
+            var sut = new Board(5, 5);
 
             Assert.DoesNotThrow(() => sut.YellowTurn(2));
 

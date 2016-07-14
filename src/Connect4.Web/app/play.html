@@ -3,10 +3,11 @@
     <require from="./turn-button"></require>
 
     <a href="#" class="go-home-button btn btn-danger pull-left" route-href="route: landing">Home</a>
-    <a href="#" class="new-game-button btn btn-success pull-right" click.trigger="newBoard()">New Game</a>
+    <a href="#" class="new-game-button btn btn-success pull-right" click.trigger="newBoard()">New</a>
 
     <section class="play-area">
         <div class="center-block">
+            <div class="draw-indicator" show.bind="board.isDraw">DRAW!</div>
             <div class="turn-button-area">
                 <div class="row">
                     <turn-button 

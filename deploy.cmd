@@ -107,7 +107,7 @@ echo Installing JSPM dependencies: Finished %TIME%
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo Running JSPM deployment: Starting %TIME%
-call :ExecuteCmd "%DEPLOYMENT_SOURCE%\src\Connect4.Web\node_modules\.bin\jspm" -y
+call :ExecuteCmd "%DEPLOYMENT_SOURCE%\src\Connect4.Web\node_modules\.bin\jspm" install -y
 echo Running JSPM deployment: Finished %TIME%
 
 echo Running Gulp deployment: Starting %TIME%
@@ -117,7 +117,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 
 echo Publishing dist folder files to temporary deployment location
 call :ExecuteCmd "xcopy" "%DEPLOYMENT_SOURCE%\src\Connect4.Web\dist\*.*" "%DEPLOYMENT_TEMP%\dist" /S /Y /I
-call :ExecuteCmd "xcopy" "%DEPLOYMENT_SOURCE%\src\Connect4.Web\jspm_packages\*.*" "%DEPLOYMENT_TEMP%\jspm_packages" /S /Y /I
+call :ExecuteCmd "xcopy" "%DEPLOYMENT_SOURCE%\src\Connect4.Web\jspm_packages\*.*" "%DEPLOYMENT_TEMP%\jspm_packages" /E /Y /I
 echo Done publishing dist folder files to temporary deployment location
 
 popd

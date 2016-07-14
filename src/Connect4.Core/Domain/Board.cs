@@ -13,20 +13,18 @@ namespace Connect4.Core.Domain
 
         public int NumberOfRows { get; }
         public int NumberOfColumns { get; }
-
         public Location[,] Locations { get; }
-
-        public int TurnCount { get; private set; }
-
         public Location this[int r, int c] => Locations[r,c];
-
+        public int TurnCount { get; private set; }
         public bool IsNextTurnRed { get; private set; }
         public bool IsNextTurnYellow { get; private set; }
+        public bool IsWon { get; private set; }
+        public bool IsDraw => NumberOfColumns * NumberOfRows == TurnCount;
 
         public Board(int numberOfRows, int numberOfColumns)
         {
-            if (numberOfRows <= 0) throw new ArgumentOutOfRangeException(nameof(numberOfRows));
-            if (numberOfColumns <= 0) throw new ArgumentOutOfRangeException(nameof(numberOfColumns));
+            if (numberOfRows < 4) throw new ArgumentOutOfRangeException(nameof(numberOfRows));
+            if (numberOfColumns < 4) throw new ArgumentOutOfRangeException(nameof(numberOfColumns));
 
             NumberOfRows = numberOfRows;
             NumberOfColumns = numberOfColumns;
@@ -55,30 +53,18 @@ namespace Connect4.Core.Domain
                     Locations[rowPosition, colPosition] = new Location(rowPosition, colPosition);
                 }
             }
+
+            IsWon = false;
+            TurnCount = 0;
+            IsNextTurnRed = false;
+            IsNextTurnYellow = false;
+
+            ChooseFirstTurn();
         }
 
         private void ValidateRange(int column)
         {
             if (column < 0 || column >= NumberOfColumns) throw new ArgumentOutOfRangeException(nameof(column));
-        }
-
-        private void ChooseFirstTurn()
-        {
-            byte[] seedGenerator = new Byte[4];
-            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
-            rng.GetBytes(seedGenerator);
-            int seed = BitConverter.ToInt32(seedGenerator, 0);
-            var rand = new Random(seed);
-            if (rand.NextDouble() >= 0.5)
-            {
-                IsNextTurnRed = true;
-                IsNextTurnYellow = false;
-            }
-            else
-            {
-                IsNextTurnRed = false;
-                IsNextTurnYellow = true;
-            }
         }
 
         private Turn TakeTurn(int column, Occupied occupied)
@@ -97,8 +83,8 @@ namespace Connect4.Core.Domain
             IsNextTurnRed = !IsNextTurnRed;
             IsNextTurnYellow = !IsNextTurnYellow;
 
-            var isWin = IsWinningTurn(availableLocation);
-            return new Turn { Location = availableLocation, IsWinningTurn = isWin, IsDraw = !isWin && IsDraw(), IsNextTurnRed = IsNextTurnRed, IsNextTurnYellow = IsNextTurnYellow };
+            IsWon = IsWinningTurn(availableLocation);
+            return new Turn { Location = availableLocation, IsWinningTurn = IsWon, IsDraw = !IsWon && IsDraw, IsNextTurnRed = IsNextTurnRed, IsNextTurnYellow = IsNextTurnYellow };
         }
 
         private bool IsWinningTurn(Location location)
@@ -108,11 +94,6 @@ namespace Connect4.Core.Domain
             || CheckForSequence(new ColumnEnumerator(this, location.LocationCol), location.Occupied)
             || CheckForSequence(new DiagonalDownEnumerator(this, location.LocationRow, location.LocationCol), location.Occupied)
             || CheckForSequence(new DiagonalUpEnumerator(this, location.LocationRow, location.LocationCol), location.Occupied);
-        }
-
-        private bool IsDraw()
-        {
-            return NumberOfColumns*NumberOfRows == TurnCount;
         }
 
         private bool CheckForSequence(IEnumerator<Location> enumerator, Occupied occupied)
@@ -134,6 +115,25 @@ namespace Connect4.Core.Domain
                 }
             }
             return false;
+        }
+
+        private void ChooseFirstTurn()
+        {
+            byte[] seedGenerator = new Byte[4];
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            rng.GetBytes(seedGenerator);
+            int seed = BitConverter.ToInt32(seedGenerator, 0);
+            var rand = new Random(seed);
+            if (rand.NextDouble() >= 0.5)
+            {
+                IsNextTurnRed = true;
+                IsNextTurnYellow = false;
+            }
+            else
+            {
+                IsNextTurnRed = false;
+                IsNextTurnYellow = true;
+            }
         }
 
         public override string ToString()

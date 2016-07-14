@@ -172,6 +172,25 @@ namespace Connect4.Tests
         [Test]
         public void Scenario_Four_Draw()
         {
+           
+        }
+
+        [Test]
+        public void Scenario_Five_Invalid_Board_Dimensions()
+        {
+        }
+
+        [Test]
+        public void Scenario_Six_Invalid_Move()
+        {
+            DrawGenerator();
+        }
+
+        /// <summary>
+        /// Call from a test to iterate games until a Draw is detected, and show the Turn sequence that was used.
+        /// </summary>
+        private void DrawGenerator()
+        {
             int iteration = 0;
             bool isDraw = false;
             byte[] seedGenerator = new Byte[4];
@@ -219,16 +238,6 @@ namespace Connect4.Tests
                     }
                 }
             }
-        }
-
-        [Test]
-        public void Scenario_Five_Invalid_Board_Dimensions()
-        {
-        }
-
-        [Test]
-        public void Scenario_Six_Invalid_Move()
-        {
         }
     }
 }

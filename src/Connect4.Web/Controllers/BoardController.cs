@@ -29,7 +29,7 @@ namespace Connect4.Controllers
         {
             var sessionState = GetSessionState();
             var board = (Board) sessionState[BoardSessionStateKey];
-            return board != null ? _boardMapper.Map(board) : null;
+            return board != null && !board.IsWon && !board.IsDraw ? _boardMapper.Map(board) : null;
         }
 
         [Route(RoutePrefix +"new/{numberOfRows}/{numberOfColumns}")]

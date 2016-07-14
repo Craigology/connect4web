@@ -196,6 +196,7 @@
     <Compile Include="App_Start\Startup.Logging.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BoardController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Dtos\BoardDto.cs" />
     <Compile Include="Dtos\LocationDto.cs" />
     <Compile Include="Dtos\TurnDto.cs" />
@@ -213,6 +214,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
@@ -244,6 +246,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Connect4Web - Web Deploy.pubxml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
