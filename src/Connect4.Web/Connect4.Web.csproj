@@ -214,6 +214,8 @@
     <Content Include="config.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="img\background.png" />
+    <Content Include="img\background2.png" />
     <Content Include="Scripts\_references.js" />
     <Content Include="styles\styles.css" />
     <Content Include="Views\Shared\_Layout.cshtml" />
