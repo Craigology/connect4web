@@ -63,7 +63,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.5;
+    opacity: 0.4;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -87,6 +87,26 @@ body {
     height: 60px;
     padding: 14px !important;
     font-size: x-large !important;
+}
+
+.landing-lower {
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+}
+
+.landing-lower span {
+    width: 100%;
+    display: inline-block;
+    color: darkslategray;
+    text-align: center;
+}
+
+.landing-lower sub {
+    width: 100%;
+    display: inline-block;
+    color: black;
+    text-align: center;
 }
 
 .play-area {

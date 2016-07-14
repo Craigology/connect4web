@@ -117,7 +117,6 @@ IF !ERRORLEVEL! NEQ 0 goto error
 
 echo Publishing dist folder files to temporary deployment location
 call :ExecuteCmd "xcopy" "%DEPLOYMENT_SOURCE%\src\Connect4.Web\dist\*.*" "%DEPLOYMENT_TEMP%\dist" /S /Y /I
-call :ExecuteCmd "xcopy" "%DEPLOYMENT_SOURCE%\src\Connect4.Web\node_modules\*.*" "%DEPLOYMENT_TEMP%\node_modules" /S /Y /I
 call :ExecuteCmd "xcopy" "%DEPLOYMENT_SOURCE%\src\Connect4.Web\jspm_packages\*.*" "%DEPLOYMENT_TEMP%\jspm_packages" /S /Y /I
 echo Done publishing dist folder files to temporary deployment location
 
