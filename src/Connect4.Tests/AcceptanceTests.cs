@@ -172,7 +172,38 @@ namespace Connect4.Tests
         [Test]
         public void Scenario_Four_Draw()
         {
-           
+            var board = new Board(5, 5);
+            var turn = board.YellowTurn(3);
+            turn = board.RedTurn(0);
+            turn = board.YellowTurn(3);
+            turn = board.RedTurn(4);
+            turn = board.YellowTurn(3);
+            turn = board.RedTurn(1);
+            turn = board.YellowTurn(2);
+            turn = board.RedTurn(3);
+            turn = board.YellowTurn(4);
+            turn = board.RedTurn(2);
+            turn = board.YellowTurn(0);
+            turn = board.RedTurn(2);
+            turn = board.YellowTurn(2);
+            turn = board.RedTurn(3);
+            turn = board.YellowTurn(0);
+            turn = board.RedTurn(0);
+            turn = board.YellowTurn(0);
+            turn = board.RedTurn(4);
+            turn = board.YellowTurn(1);
+            turn = board.RedTurn(1);
+            turn = board.YellowTurn(1);
+            turn = board.RedTurn(1);
+            turn = board.YellowTurn(4);
+            turn = board.RedTurn(4);
+            turn.IsDraw.ShouldBe(false);
+            board.IsDraw.ShouldBe(false);
+
+            turn = board.YellowTurn(2);
+     
+            turn.IsDraw.ShouldBe(true);
+            board.IsDraw.ShouldBe(true);
         }
 
         [Test]

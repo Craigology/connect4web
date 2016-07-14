@@ -34,7 +34,7 @@ namespace Connect4.Tests
             Assert.DoesNotThrow(() => sut.RedTurn(2));
 
             Assert.Throws<ArgumentOutOfRangeException>(() => sut.RedTurn(-1));
-            Assert.Throws<ArgumentOutOfRangeException>(() => sut.RedTurn(3));
+            Assert.Throws<ArgumentOutOfRangeException>(() => sut.RedTurn(5));
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace Connect4.Tests
             Assert.DoesNotThrow(() => sut.YellowTurn(2));
 
             Assert.Throws<ArgumentOutOfRangeException>(() => sut.YellowTurn(-1));
-            Assert.Throws<ArgumentOutOfRangeException>(() => sut.YellowTurn(3));
+            Assert.Throws<ArgumentOutOfRangeException>(() => sut.YellowTurn(5));
         }
     }
 }

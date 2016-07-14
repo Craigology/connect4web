@@ -23,8 +23,8 @@ namespace Connect4.Core.Domain
 
         public Board(int numberOfRows, int numberOfColumns)
         {
-            if (numberOfRows < 4) throw new ArgumentOutOfRangeException(nameof(numberOfRows));
-            if (numberOfColumns < 4) throw new ArgumentOutOfRangeException(nameof(numberOfColumns));
+            if (numberOfRows < WinningSequenceLength) throw new ArgumentOutOfRangeException(nameof(numberOfRows));
+            if (numberOfColumns < WinningSequenceLength) throw new ArgumentOutOfRangeException(nameof(numberOfColumns));
 
             NumberOfRows = numberOfRows;
             NumberOfColumns = numberOfColumns;

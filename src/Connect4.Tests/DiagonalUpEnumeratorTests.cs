@@ -12,7 +12,7 @@ namespace Connect4.Tests
         [Test]
         public void DiagonalUpEnumerator_InitialState_InvalidUntilMoveNextCalled()
         {
-            var board = new Board(3, 3);
+            var board = new Board(5, 5);
             var sut = new DiagonalUpEnumerator(board, 1, 1);
 
             Assert.Throws<IndexOutOfRangeException>(() => { var location = sut.Current; });
@@ -25,7 +25,7 @@ namespace Connect4.Tests
         [Test]
         public void DiagonalUpEnumerator_MoveNext_ReturnsTheExpectedLocation()
         {
-            var board = new Board(3, 3);
+            var board = new Board(5, 5);
             board[2, 0].Occupied = Occupied.Red;
             board[1, 1].Occupied = Occupied.Yellow;
             board[0, 2].Occupied = Occupied.Red;
@@ -43,7 +43,7 @@ namespace Connect4.Tests
         [Test]
         public void DiagonalUpEnumerator_MoveNext_ReturnsFalseAtEndOfDiagonal()
         {
-            var board = new Board(3, 3);
+            var board = new Board(5, 5);
             board[2, 0].Occupied = Occupied.Red;
             board[1, 1].Occupied = Occupied.Yellow;
             board[0, 2].Occupied = Occupied.Red;
