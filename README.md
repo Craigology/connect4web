@@ -21,7 +21,7 @@ To implement a lightweight algorithm of the classic Connect Four game satisfying
 * Animate.CSS
 * Backstretch
 
-## Noteable Features
+## Notable Features
 
 ### Single Page Application
 The SPA design removes page reloads and helps makes API interactions fast and responsive.
