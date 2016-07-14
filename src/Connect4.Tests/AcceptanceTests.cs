@@ -170,8 +170,17 @@ namespace Connect4.Tests
         }
 
         [Test]
+        //0 [Y][R][Y][R][R]
+        //1 [R][Y][Y][R][Y]
+        //2 [Y][R][R][Y][R]
+        //3 [Y][Y][R][Y][Y]
+        //4 [R][R][Y][Y][R]
+        //   0  1  2  3  4
         public void Scenario_Four_Draw()
         {
+            // Uncomment to run the generator.
+            //DrawGenerator();
+
             var board = new Board(5, 5);
             var turn = board.YellowTurn(3);
             turn = board.RedTurn(0);
@@ -209,12 +218,29 @@ namespace Connect4.Tests
         [Test]
         public void Scenario_Five_Invalid_Board_Dimensions()
         {
+            Assert.DoesNotThrow(() => new Board(4, 4));
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Board(0, 1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Board(-1, 4));
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Board(1, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Board(4, -1));
         }
 
         [Test]
         public void Scenario_Six_Invalid_Move()
         {
-            DrawGenerator();
+            var sut = new Board(5, 5);
+
+            Assert.DoesNotThrow(() => sut.RedTurn(2));
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => sut.RedTurn(-1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => sut.YellowTurn(5));
+
+            Assert.DoesNotThrow(() => sut.YellowTurn(2));
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => sut.YellowTurn(-1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => sut.YellowTurn(5));
         }
 
         /// <summary>
