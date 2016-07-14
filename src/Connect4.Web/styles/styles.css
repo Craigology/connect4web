@@ -75,6 +75,7 @@ body {
 .landing-mid {
     position: absolute;
     bottom: 50%;
+    width: 100%;
 }
 
 .play-params {

@@ -107,11 +107,11 @@ echo Installing JSPM dependencies: Finished %TIME%
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo Running JSPM deployment: Starting %TIME%
-call :ExecuteCmd "%DEPLOYMENT_SOURCE%\node_modules\.bin\jspm" -y
+call :ExecuteCmd "%DEPLOYMENT_SOURCE%\src\Connect4.Web\node_modules\.bin\jspm" -y
 echo Running JSPM deployment: Finished %TIME%
 
 echo Running Gulp deployment: Starting %TIME%
-call :ExecuteCmd "%DEPLOYMENT_SOURCE%\node_modules\.bin\gulp" build
+call :ExecuteCmd "%DEPLOYMENT_SOURCE%\src\Connect4.Web\node_modules\.bin\gulp" build
 echo Running Gulp deployment: Finished %TIME%
 IF !ERRORLEVEL! NEQ 0 goto error
 
