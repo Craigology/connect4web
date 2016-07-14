@@ -13,10 +13,12 @@ To implement a lightweight algorithm of the classic Connect Four game satisfying
 * ASP.NET MVC5 / WEB API2
 * Owin
 * Autofac
-* Serilog
+* Serilog/Seq
 * NUnit
-* Aurelia
+* Aurelia (routing, templating, binding)
+* ES6/2015
 * NPM and JSPM package managers
+* Gulp
 * Bootstrap
 * Animate.CSS
 * Backstretch
@@ -28,6 +30,9 @@ The SPA design removes page reloads and helps makes API interactions fast and re
 
 ### Sessionful
 ASP.NET sessions (tracked via cookies) retain the state of the player's board even with a full page refresh and single page application reboot. This elapses when the session times-out or the application pool is recycled. The board state is discarded when a game concludes via a win or a draw.
+
+### Diagnostics
+Serilog has been added to the Owin middleware for Web API 2, with a sink to a configurable Seq instance (http://localhost:5341 by default). All API requests will be logged including any enrich properties.
 
 ### In-memory board visualisations
 To assist debugging and testing, the board can be visualised in a debug watch window:
