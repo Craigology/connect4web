@@ -29,7 +29,7 @@ export class Play {
     }
 
     get CanPlay() {
-        return this.board !== undefined && this.board.isWon === false && this.board.isDraw == false;
+        return this.board !== undefined && this.board.isWon === false && this.board.isDraw === false;
     }
 
     activate() {
@@ -121,7 +121,12 @@ export class Play {
                     }
 
                     if (turn.isWinningTurn) {
+                        self.board.isWon = true;
                         self.board.rows[turn.locationRow][turn.locationCol].isWin = true;
+                    }
+
+                    if (turn.isDraw) {
+                        self.board.isDraw = true;
                     }
                 }
             });

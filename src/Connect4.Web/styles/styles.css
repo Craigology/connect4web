@@ -72,8 +72,20 @@ body {
     background-image: url("/img/background2.png");
 }
 
+.landing-mid {
+    position: absolute;
+    bottom: 50%;
+}
+
 .play-params {
     text-align: center;
+}
+
+.play-button {
+    width: 200px;
+    height: 60px;
+    padding: 14px !important;
+    font-size: x-large !important;
 }
 
 .play-area {
@@ -107,10 +119,18 @@ body {
     display: table;
 }
 
+.go-home-button {
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    width: 100px;
+}
+
 .new-game-button {
     margin-top: 10px;
     margin-right: 10px;
     padding: 5px;
+    width: 100px;
 }
 
 .turn-button-area {

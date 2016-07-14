@@ -99,6 +99,7 @@ echo Installing Gulp dependencies: Starting %TIME%
 call npm install gulp
 echo Installing Gulp dependencies: Finished %TIME%
 IF !ERRORLEVEL! NEQ 0 goto error
+)
 
 echo Installing JSPM dependencies: Starting %TIME%
 call npm install jspm 
@@ -113,7 +114,6 @@ echo Running Gulp deployment: Starting %TIME%
 call :ExecuteCmd "%DEPLOYMENT_SOURCE%\node_modules\.bin\gulp" build
 echo Running Gulp deployment: Finished %TIME%
 IF !ERRORLEVEL! NEQ 0 goto error
-)
 
 echo Publishing dist folder files to temporary deployment location
 call :ExecuteCmd "xcopy" "%DEPLOYMENT_SOURCE%\src\Connect4.Web\dist\*.*" "%DEPLOYMENT_TEMP%\dist" /S /Y /I
