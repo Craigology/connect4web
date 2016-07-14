@@ -1,2 +1,2 @@
 [config]
-project = src/Connect4.Web
+command = deploy.cmd
