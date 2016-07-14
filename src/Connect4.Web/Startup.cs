@@ -1,9 +1,4 @@
-﻿using System.Reflection;
-using System.Web.Http;
-using Autofac;
-using Autofac.Integration.WebApi;
-using Connect4.Mappers;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof(Connect4.Startup))]

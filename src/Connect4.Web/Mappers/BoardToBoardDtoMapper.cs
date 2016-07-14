@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq;
 using Connect4.Core.Domain;
 using Connect4.Dtos;
 
@@ -22,7 +19,9 @@ namespace Connect4.Mappers
             {
                 NumberOfRows = from.NumberOfRows,
                 NumberOfColumns = from.NumberOfColumns,
-                Locations = from.Locations.Cast<Location>().Select(x => _locationMapper.Map(x)).ToArray()
+                Locations = from.Locations.Cast<Location>().Select(x => _locationMapper.Map(x)).ToArray(),
+                IsNextTurnYellow = from.IsNextTurnYellow,
+                IsNextTurnRed = from.IsNextTurnRed
             };
         }
     }

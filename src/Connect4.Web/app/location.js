@@ -36,5 +36,9 @@ export class Location {
         } else {
             this.css = "location-empty";
         }
+
+        if (this.isWin === true) {
+            this.css = this.css + " location-winning";
+        }
     }
 }

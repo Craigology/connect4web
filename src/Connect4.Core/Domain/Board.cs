@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using Connect4.Core.Enumerators;
 
@@ -19,6 +20,9 @@ namespace Connect4.Core.Domain
 
         public Location this[int r, int c] => Locations[r,c];
 
+        public bool IsNextTurnRed { get; private set; }
+        public bool IsNextTurnYellow { get; private set; }
+
         public Board(int numberOfRows, int numberOfColumns)
         {
             if (numberOfRows <= 0) throw new ArgumentOutOfRangeException(nameof(numberOfRows));
@@ -26,16 +30,10 @@ namespace Connect4.Core.Domain
 
             NumberOfRows = numberOfRows;
             NumberOfColumns = numberOfColumns;
+            Locations = new Location[NumberOfRows, NumberOfColumns];
 
-            Locations = new Location[NumberOfRows,NumberOfColumns];
-
-            for (int colPosition = 0; colPosition < NumberOfColumns; colPosition++)
-            {
-                for (int rowPosition = 0; rowPosition < NumberOfRows; rowPosition++)
-                {
-                    Locations[rowPosition, colPosition] = new Location(rowPosition, colPosition);
-                }
-            }
+            Reset();
+            ChooseFirstTurn();
         }
 
         public Turn RedTurn(int column)
@@ -48,9 +46,39 @@ namespace Connect4.Core.Domain
             return TakeTurn(column, Occupied.Yellow);
         }
 
+        private void Reset()
+        {
+            for (int colPosition = 0; colPosition < NumberOfColumns; colPosition++)
+            {
+                for (int rowPosition = 0; rowPosition < NumberOfRows; rowPosition++)
+                {
+                    Locations[rowPosition, colPosition] = new Location(rowPosition, colPosition);
+                }
+            }
+        }
+
         private void ValidateRange(int column)
         {
             if (column < 0 || column >= NumberOfColumns) throw new ArgumentOutOfRangeException(nameof(column));
+        }
+
+        private void ChooseFirstTurn()
+        {
+            byte[] seedGenerator = new Byte[4];
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            rng.GetBytes(seedGenerator);
+            int seed = BitConverter.ToInt32(seedGenerator, 0);
+            var rand = new Random(seed);
+            if (rand.NextDouble() >= 0.5)
+            {
+                IsNextTurnRed = true;
+                IsNextTurnYellow = false;
+            }
+            else
+            {
+                IsNextTurnRed = false;
+                IsNextTurnYellow = true;
+            }
         }
 
         private Turn TakeTurn(int column, Occupied occupied)
@@ -66,9 +94,11 @@ namespace Connect4.Core.Domain
             availableLocation.Occupied = occupied;
 
             TurnCount++;
+            IsNextTurnRed = !IsNextTurnRed;
+            IsNextTurnYellow = !IsNextTurnYellow;
 
             var isWin = IsWinningTurn(availableLocation);
-            return new Turn { Location = availableLocation, IsWinningTurn = isWin, IsDraw = !isWin && IsDraw() };
+            return new Turn { Location = availableLocation, IsWinningTurn = isWin, IsDraw = !isWin && IsDraw(), IsNextTurnRed = IsNextTurnRed, IsNextTurnYellow = IsNextTurnYellow };
         }
 
         private bool IsWinningTurn(Location location)

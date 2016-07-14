@@ -2,13 +2,16 @@
     <require from="./location"></require>
     <require from="./turn-button"></require>
 
-    <div class="container">
-        <div class="play-area">
+    <a href="#" class="new-game-button btn btn-success pull-right" click.trigger="newBoard()">New Game</a>
+
+    <section class="play-area">
+        <div class="center-block">
             <div class="turn-button-area">
                 <div class="row">
                     <turn-button 
                         repeat.for="turnButton of board.turnButtons"
                             column.bind="turnButton.column"
+                            css.bind="TurnButtonCss"
                         >
                     </turn-button>
                 </div>

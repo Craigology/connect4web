@@ -13,7 +13,9 @@ namespace Connect4.Mappers
                 LocationRow = from.Location?.LocationRow,
                 IsInvalidTurn = Turn.InvalidTurn == from,
                 IsWinningTurn = from.IsWinningTurn,
-                IsDraw = from.IsDraw
+                IsDraw = from.IsDraw,
+                IsNextTurnRed = from.IsNextTurnRed && !from.IsDraw && !from.IsWinningTurn,
+                IsNextTurnYellow = from.IsNextTurnYellow && !from.IsDraw && !from.IsWinningTurn,
             };
         }
     }

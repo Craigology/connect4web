@@ -31,7 +31,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: auto;
 }
 
@@ -50,7 +50,6 @@ body {
     font-weight: bolder;
 }
 
-
 .landing:before {
     overflow-y: hidden;
     min-width: 400px;
@@ -60,11 +59,11 @@ body {
     left: 0;
     top: 0;
     margin: 0;
-    padding: 0 0 0 50px;
+    padding: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.2;
+    opacity: 0.5;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -78,8 +77,40 @@ body {
 }
 
 .play-area {
-    padding-top: 100px;
-    padding-bottom: 100px
+    padding-top: 80px;
+    padding-bottom: 10px
+}
+
+.play-area:before {
+    overflow-y: hidden;
+    min-width: 400px;
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.05;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url("/img/background2.png");
+}
+
+.play-area > div {
+    display: table;
+}
+
+.new-game-button {
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 5px;
 }
 
 .turn-button-area {
@@ -92,13 +123,27 @@ body {
 
 .turn-button-area .btn {
     height: 100%;
-    opacity: 0.1;
+    opacity: 0.8;
     width: 100px;
     margin: 10px;
+    background-color: transparent;
+    border-color: transparent;
+    outline: 0;
 }
 
-.turn-button-area .btn:hover {
-    opacity: 0.5;
+.turn-button-area .btn:hover,.btn:active,.btn:focus {
+    opacity: 1.0;
+    background-color: transparent;
+    border-color: transparent;
+    outline: 0;
+}
+
+.turn-button-red {
+    color: #BB1819;
+}
+
+.turn-button-yellow {
+    color: #F5E051;
 }
 
 .board {
@@ -136,4 +181,10 @@ body {
     background-color: #F5E051;
     border-color: #F5E051;  
     border-radius: 50px;    
+}
+
+.location-winning {
+    border-color: lightseagreen;  
+    border-width: 10px;
+    border-style: solid;
 }

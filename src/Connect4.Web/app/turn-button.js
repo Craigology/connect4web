@@ -4,6 +4,7 @@ import {inject, bindable, customElement} from 'aurelia-framework';
 @inject(Element)
 export class TurnButton {
     @bindable column;
+    @bindable css;
     constructor(element) {
         this.element = element;
     }
@@ -13,6 +14,7 @@ export class TurnButton {
     }
 
     turn() {
+        this.element.blur();
         this.parent.attemptTurn(this.column);
     }
 }
